@@ -1,0 +1,7 @@
+Id: devtools
+Name: Neverway DevTools
+Version: 0.1.0
+Author: yuna0x0
+Description: Developer tools for Neverway - command console, noclip, cheats, component viewer/editor, and scene switcher. Toggle with F2.
+DLL: NeverwayMod.DevTools.dll
+Dependencies: []
