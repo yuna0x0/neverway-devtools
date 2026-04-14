@@ -59,10 +59,11 @@ foreach ($p in $Platforms) {
     Copy-Item $ImGuiDll.FullName $Dist
     Copy-Item $NativeFile $Dist
 
-    $Zip = Join-Path $ProjectDir "neverway-devtools-$Version-$($p.Name).zip"
+    $Zip = Join-Path $ProjectDir "dist\neverway-devtools-$Version-$($p.Name).zip"
     Compress-Archive -Path (Join-Path $ProjectDir "dist\$($p.Name)\devtools") -DestinationPath $Zip -Force
     Write-Host "  $Zip"
 }
 
-Remove-Item -Recurse -Force (Join-Path $ProjectDir "dist") -ErrorAction SilentlyContinue
-Write-Host "Done."
+# Clean up platform dirs, keep zips
+$Platforms | ForEach-Object { Remove-Item -Recurse -Force (Join-Path $ProjectDir "dist\$($_.Name)") -ErrorAction SilentlyContinue }
+Write-Host "Done. Zips in $(Join-Path $ProjectDir 'dist\')"

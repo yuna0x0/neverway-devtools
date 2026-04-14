@@ -60,10 +60,11 @@ for entry in "${PLATFORMS[@]}"; do
     cp "$IMGUI_DLL" "$DIST/"
     cp "$NATIVE_FILE" "$DIST/"
 
-    ZIP="$PROJECT_DIR/neverway-devtools-${VERSION}-${PLATFORM}.zip"
+    ZIP="$PROJECT_DIR/dist/neverway-devtools-${VERSION}-${PLATFORM}.zip"
     (cd "$PROJECT_DIR/dist/$PLATFORM" && zip -r "$ZIP" devtools/)
     echo "  $ZIP"
 done
 
-rm -rf "$PROJECT_DIR/dist"
-echo "Done."
+# Clean up platform dirs, keep zips
+rm -rf "$PROJECT_DIR/dist/macos" "$PROJECT_DIR/dist/windows" "$PROJECT_DIR/dist/linux"
+echo "Done. Zips in $PROJECT_DIR/dist/"
