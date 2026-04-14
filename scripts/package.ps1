@@ -33,12 +33,15 @@ if (-not $ImGuiDll) {
     exit 1
 }
 
-$RuntimesDir = Join-Path (Split-Path (Split-Path $ImGuiDll.DirectoryName)) "runtimes"
+# Native libs are at package root, not under lib/
+$PkgDir = ($ImGuiDll.FullName -replace '[\\/]lib[\\/].*$', '')
+$RuntimesDir = Join-Path $PkgDir "runtimes"
 
 $Platforms = @(
-    @{ Name = "windows"; Native = "win-x64\native\cimgui.dll" }
-    @{ Name = "macos";   Native = "osx\native\libcimgui.dylib" }
-    @{ Name = "linux";   Native = "linux-x64\native\libcimgui.so" }
+    @{ Name = "macos-universal";  Native = "osx\native\libcimgui.dylib" }
+    @{ Name = "windows-x64";     Native = "win-x64\native\cimgui.dll" }
+    @{ Name = "windows-arm64";   Native = "win-arm64\native\cimgui.dll" }
+    @{ Name = "linux-x64";       Native = "linux-x64\native\libcimgui.so" }
 )
 
 Write-Host "Packaging release zips..."

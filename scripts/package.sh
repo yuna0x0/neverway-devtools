@@ -5,7 +5,7 @@ set -euo pipefail
 # Usage: ./scripts/package.sh <game-dir> [version]
 #
 # Example:
-#   ./scripts/package.sh "/path/to/Neverway Prologue" v0.1.0
+#   ./scripts/package.sh "/path/to/Neverway" v0.1.0
 
 GAME_DIR="${1:?Usage: $0 <game-dir> [version]}"
 VERSION="${2:-dev}"
@@ -28,15 +28,16 @@ if [ -z "$IMGUI_DLL" ]; then
     exit 1
 fi
 
-# Find ImGui native libs
-# Native libs are at the package root level, not under lib/
+# Find ImGui native libs (at package root, not under lib/)
 IMGUI_PKG_DIR=$(echo "$IMGUI_DLL" | sed 's|/lib/.*||')
 IMGUI_RUNTIMES="$IMGUI_PKG_DIR/runtimes"
 
+# Platform name : native lib path relative to runtimes/
 PLATFORMS=(
-    "macos:osx/native/libcimgui.dylib"
-    "windows:win-x64/native/cimgui.dll"
-    "linux:linux-x64/native/libcimgui.so"
+    "macos-universal:osx/native/libcimgui.dylib"
+    "windows-x64:win-x64/native/cimgui.dll"
+    "windows-arm64:win-arm64/native/cimgui.dll"
+    "linux-x64:linux-x64/native/libcimgui.so"
 )
 
 echo "Packaging release zips..."
@@ -66,5 +67,7 @@ for entry in "${PLATFORMS[@]}"; do
 done
 
 # Clean up platform dirs, keep zips
-rm -rf "$PROJECT_DIR/dist/macos" "$PROJECT_DIR/dist/windows" "$PROJECT_DIR/dist/linux"
+for entry in "${PLATFORMS[@]}"; do
+    rm -rf "$PROJECT_DIR/dist/${entry%%:*}"
+done
 echo "Done. Zips in $PROJECT_DIR/dist/"
