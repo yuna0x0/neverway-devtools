@@ -1,5 +1,7 @@
 # Neverway DevTools
 
+<img src="assets/example.webp" alt="Neverway DevTools screenshot" width="800">
+
 Developer tools mod for [Neverway](https://store.steampowered.com/app/2318330/Neverway/), built with [murder-mod-loader](https://github.com/yuna0x0/murder-mod-loader).
 
 Press **F2** to toggle the overlay. Press **F3** to toggle noclip.
