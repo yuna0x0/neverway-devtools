@@ -89,10 +89,10 @@ Build platform-specific release zips using the package script:
 
 ```bash
 # macOS / Linux
-./scripts/package.sh "/path/to/Neverway" v0.1.2
+./scripts/package.sh "/path/to/Neverway" v0.1.3
 
 # Windows (PowerShell)
-.\scripts\package.ps1 "C:\path\to\Neverway" v0.1.2
+.\scripts\package.ps1 "C:\path\to\Neverway" v0.1.3
 ```
 
 This builds the mod and creates zips for all platforms in `dist/`.
@@ -100,7 +100,7 @@ This builds the mod and creates zips for all platforms in `dist/`.
 To upload the zips to a GitHub release:
 
 ```bash
-gh release upload v0.1.2 dist/*.zip --clobber
+gh release upload v0.1.3 dist/*.zip --clobber
 ```
 
 ## Manual Installation
