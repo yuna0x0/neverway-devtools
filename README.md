@@ -83,6 +83,26 @@ murder-mod-install build . "/path/to/Neverway"
 dotnet build -p:GameAssemblyPath="/path/to/Neverway/.modded"
 ```
 
+## Packaging a Release
+
+Build platform-specific release zips using the package script:
+
+```bash
+# macOS / Linux
+./scripts/package.sh "/path/to/Neverway" v0.1.2
+
+# Windows (PowerShell)
+.\scripts\package.ps1 "C:\path\to\Neverway" v0.1.2
+```
+
+This builds the mod and creates zips for all platforms in `dist/`.
+
+To upload the zips to a GitHub release:
+
+```bash
+gh release upload v0.1.2 dist/*.zip --clobber
+```
+
 ## Manual Installation
 
 Copy to the game's mods directory:
