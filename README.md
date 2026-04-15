@@ -67,10 +67,11 @@ dotnet tool install -g murder-mod-install
 # Install mod loader into the game
 murder-mod-install "/path/to/Neverway"
 
-# Clone and build this mod
-git clone https://github.com/yuna0x0/neverway-devtools.git
-cd neverway-devtools
-murder-mod-install build . "/path/to/Neverway"
+# Install the mod directly from the latest release
+murder-mod-install add https://github.com/yuna0x0/neverway-devtools/releases/download/v0.1.3/neverway-devtools-v0.1.3-macos-universal.zip "/path/to/Neverway"    # macOS
+murder-mod-install add https://github.com/yuna0x0/neverway-devtools/releases/download/v0.1.3/neverway-devtools-v0.1.3-windows-x64.zip "/path/to/Neverway"        # Windows x64
+murder-mod-install add https://github.com/yuna0x0/neverway-devtools/releases/download/v0.1.3/neverway-devtools-v0.1.3-windows-arm64.zip "/path/to/Neverway"      # Windows ARM64
+murder-mod-install add https://github.com/yuna0x0/neverway-devtools/releases/download/v0.1.3/neverway-devtools-v0.1.3-linux-x64.zip "/path/to/Neverway"          # Linux
 
 # Launch
 "/path/to/Neverway/launch-modded.sh"    # macOS / Linux
@@ -78,6 +79,14 @@ murder-mod-install build . "/path/to/Neverway"
 ```
 
 ## Building from Source
+
+```bash
+git clone https://github.com/yuna0x0/neverway-devtools.git
+cd neverway-devtools
+murder-mod-install build . "/path/to/Neverway"
+```
+
+Or build manually with `dotnet`:
 
 ```sh
 dotnet build -p:GameAssemblyPath="/path/to/Neverway/.modded"
