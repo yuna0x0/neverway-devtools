@@ -2,7 +2,7 @@ using Bang;
 using DevTools.Core;
 using ImGuiNET;
 using Murder.Core;
-using MurderGame = Murder.Game;
+using NeverwayMod.DevTools.Core;
 
 namespace DevTools.UI;
 
@@ -30,10 +30,10 @@ public static class CheatsPanel
 
     public static void Render()
     {
-        var world = GetWorld();
+        var world = GameHelper.GetWorld();
         if (world == null)
         {
-            ImGui.TextColored(new System.Numerics.Vector4(1, 0.5f, 0.5f, 1), "No active world.");
+            ImGui.TextColored(UIColors.Error, "No active world.");
             return;
         }
 
@@ -239,8 +239,4 @@ public static class CheatsPanel
         ConsoleEngine.Execute(world, command);
     }
 
-    private static World? GetWorld()
-    {
-        return (MurderGame.Instance?.ActiveScene as GameScene)?.World;
-    }
 }

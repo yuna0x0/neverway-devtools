@@ -1,11 +1,10 @@
-using System.Numerics;
 using Bang;
 using Bang.Entities;
 using DevTools.Core;
 using ImGuiNET;
 using Murder.Core;
 using Murder.Utilities;
-using MurderGame = Murder.Game;
+using NeverwayMod.DevTools.Core;
 
 namespace DevTools.UI;
 
@@ -16,16 +15,16 @@ public static class NoclipPanel
 
     public static void Render()
     {
-        var world = (MurderGame.Instance?.ActiveScene as GameScene)?.World as MonoWorld;
+        var world = GameHelper.GetMonoWorld();
 
         // Status
         if (NoclipController.IsActive)
         {
-            ImGui.TextColored(new Vector4(0.2f, 1f, 0.2f, 1f), "ACTIVE");
+            ImGui.TextColored(UIColors.Active, "ACTIVE");
         }
         else
         {
-            ImGui.TextColored(new Vector4(0.5f, 0.5f, 0.5f, 1f), "INACTIVE");
+            ImGui.TextColored(UIColors.Inactive, "INACTIVE");
         }
         ImGui.SameLine();
         ImGui.TextDisabled("Toggle: F3");

@@ -2,6 +2,7 @@ using DevTools.Core;
 using ImGuiNET;
 using Murder;
 using Murder.Core;
+using NeverwayMod.DevTools.Core;
 using MurderGame = Murder.Game;
 
 namespace DevTools.UI;
@@ -76,7 +77,7 @@ public static class DevToolsOverlay
         }
 
         if (NoclipController.IsActive)
-            ImGui.TextColored(new System.Numerics.Vector4(0.2f, 1f, 0.2f, 1f), "Noclip: ON");
+            ImGui.TextColored(UIColors.Active, "Noclip: ON");
         else
             ImGui.TextDisabled("Noclip: OFF");
         ImGui.SameLine();

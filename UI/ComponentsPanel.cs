@@ -7,7 +7,7 @@ using ImGuiNET;
 using Murder.Core;
 using Murder.Services;
 using Murder.Utilities;
-using MurderGame = Murder.Game;
+using NeverwayMod.DevTools.Core;
 
 namespace DevTools.UI;
 
@@ -20,10 +20,10 @@ public static class ComponentsPanel
 
     public static void Render()
     {
-        var world = (MurderGame.Instance?.ActiveScene as GameScene)?.World as MonoWorld;
+        var world = GameHelper.GetMonoWorld();
         if (world == null)
         {
-            ImGui.TextColored(new System.Numerics.Vector4(1, 0.5f, 0.5f, 1), "No active world.");
+            ImGui.TextColored(UIColors.Error, "No active world.");
             return;
         }
 
@@ -117,7 +117,7 @@ public static class ComponentsPanel
         var entity = world.TryGetEntity(_selectedEntityId);
         if (entity == null)
         {
-            ImGui.TextColored(new System.Numerics.Vector4(1, 0.5f, 0.5f, 1), $"Entity #{_selectedEntityId} destroyed.");
+            ImGui.TextColored(UIColors.Error, $"Entity #{_selectedEntityId} destroyed.");
             _selectedEntityId = -1;
             return;
         }
@@ -149,7 +149,7 @@ public static class ComponentsPanel
         }
         catch
         {
-            ImGui.TextColored(new System.Numerics.Vector4(1, 0.5f, 0.5f, 1), "Failed to read components.");
+            ImGui.TextColored(UIColors.Error, "Failed to read components.");
             return;
         }
 

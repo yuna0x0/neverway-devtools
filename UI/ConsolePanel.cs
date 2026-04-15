@@ -2,7 +2,7 @@ using Bang;
 using DevTools.Core;
 using ImGuiNET;
 using Murder.Core;
-using MurderGame = Murder.Game;
+using NeverwayMod.DevTools.Core;
 
 namespace DevTools.UI;
 
@@ -18,7 +18,7 @@ public static unsafe class ConsolePanel
 
     public static void Render()
     {
-        var world = GetWorld();
+        var world = GameHelper.GetWorld();
 
         var style = ImGui.GetStyle();
         var bottomReserve = style.ItemSpacing.Y + ImGui.GetFrameHeightWithSpacing() + ImGui.GetTextLineHeightWithSpacing();
@@ -173,8 +173,4 @@ public static unsafe class ConsolePanel
         return 0;
     }
 
-    private static World? GetWorld()
-    {
-        return (MurderGame.Instance?.ActiveScene as GameScene)?.World;
-    }
 }

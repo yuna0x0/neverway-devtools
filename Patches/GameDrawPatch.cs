@@ -6,7 +6,7 @@ using ImGuiNET;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Murder.Core;
-using MurderGame = Murder.Game;
+using NeverwayMod.DevTools.Core;
 
 namespace DevTools;
 
@@ -62,7 +62,7 @@ public static class GameDrawPatch
         var f3 = keyboard.IsKeyDown(Keys.F3);
         if (f3 && !_prevF3)
         {
-            var world = (MurderGame.Instance?.ActiveScene as GameScene)?.World as MonoWorld;
+            var world = GameHelper.GetMonoWorld();
             if (world != null)
                 NoclipController.Toggle(world);
         }
@@ -70,7 +70,7 @@ public static class GameDrawPatch
 
         // Update noclip movement every frame (even when overlay hidden)
         {
-            var world = (MurderGame.Instance?.ActiveScene as GameScene)?.World as MonoWorld;
+            var world = GameHelper.GetMonoWorld();
             if (world != null)
                 NoclipController.Update(world, (float)gameTime.ElapsedGameTime.TotalSeconds);
         }

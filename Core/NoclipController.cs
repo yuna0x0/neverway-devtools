@@ -5,6 +5,7 @@ using ImGuiNET;
 using Microsoft.Xna.Framework.Input;
 using Murder.Core;
 using Murder.Utilities;
+using NeverwayMod.DevTools.Core;
 
 namespace DevTools.Core;
 
@@ -87,7 +88,7 @@ public static class NoclipController
     {
         if (!IsActive) return;
 
-        var world = (Murder.Game.Instance?.ActiveScene as GameScene)?.World as MonoWorld;
+        var world = GameHelper.GetMonoWorld();
         if (world != null)
             Disable(world);
         else
