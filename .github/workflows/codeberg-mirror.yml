@@ -1,5 +1,7 @@
 name: Mirror to Codeberg
 on: [push, workflow_dispatch]
+concurrency:
+  group: codeberg-mirror
 jobs:
   mirror:
     runs-on: ubuntu-latest
