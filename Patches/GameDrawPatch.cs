@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Murder.Core;
 using NeverwayMod.DevTools.Core;
+using MurderGame = Murder.Game;
 
 namespace DevTools;
 
