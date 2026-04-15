@@ -115,6 +115,10 @@ Copy to the game's mods directory:
 - [ ] System viewer (list/toggle active ECS systems)
 - [ ] Keyboard input suppression when typing in console
 
+## AI Disclosure
+
+AI was used to assist in the creation of some of this tool's base code.
+
 ## License
 
 [MIT](LICENSE)
