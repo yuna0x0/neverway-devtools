@@ -67,7 +67,9 @@ dotnet tool install -g murder-mod-install
 # Install mod loader into the game
 murder-mod-install "/path/to/Neverway"
 
-# Build and install this mod
+# Clone and build this mod
+git clone https://github.com/yuna0x0/neverway-devtools.git
+cd neverway-devtools
 murder-mod-install build . "/path/to/Neverway"
 
 # Launch
